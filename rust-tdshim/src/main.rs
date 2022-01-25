@@ -30,30 +30,6 @@ extern "win64" {
 
 mod asm;
 
-use r_efi::efi;
-
-use r_uefi_pi::fv;
-use r_uefi_pi::hob::*;
-use r_uefi_pi::pi;
-use r_uefi_pi::pi::hob;
-use tdx_tdcall::tdx;
-use uefi_pi::pi::{fv_lib, hob_lib};
-
-use rust_td_layout::RuntimeMemoryLayout;
-use rust_td_layout::{build_time, build_time::*};
-use rust_td_layout::{runtime, runtime::*};
-
-use core::panic::PanicInfo;
-
-use core::ffi::c_void;
-
-use crate::e820::create_e820_entries;
-use crate::memory::Memory;
-use crate::memslice::SliceType;
-use crate::verify::PayloadVerifier;
-use scroll::{Pread, Pwrite};
-use zerocopy::{AsBytes, FromBytes};
-
 #[repr(C)]
 #[derive(Copy, Clone, Debug, Pwrite, Pread)]
 pub struct HobTemplate {
